@@ -209,31 +209,31 @@ useEffect(() => {
                   className="mySwiper h-[300px] mt-5 "
                 >
                   <SwiperSlide>
-                    <img src="https://i.ibb.co/7ztJFPH/image-product-desktop.jpg" alt="" className=" rounded-xl " />
+                    <img src="https://i.pinimg.com/originals/b8/59/ef/b859efc3d0f233861668dd03ea9eddc1.jpg" alt="" className=" rounded-xl " />
                   </SwiperSlide>
                   <SwiperSlide>
-                  <img src="https://i.ibb.co/7ztJFPH/image-product-desktop.jpg" alt="" className=" rounded-xl " />
+                  <img src="https://upload-os-bbs.hoyolab.com/upload/2023/06/01/329402116/e2d84cf968710b95186e262ce2d3bee5_2436149229872694004.jpeg" alt="" className=" rounded-xl " />
                   </SwiperSlide>
                   <SwiperSlide>
-                  <img src="https://i.ibb.co/7ztJFPH/image-product-desktop.jpg" alt="" className=" rounded-xl " />
+                  <img src="https://i.pinimg.com/originals/6e/03/21/6e0321597039afa3bc11d02d52fdfa6e.jpg" alt="" className=" rounded-xl " />
                   </SwiperSlide>
                   <SwiperSlide>
-                  <img src="https://i.ibb.co/7ztJFPH/image-product-desktop.jpg" alt="" className=" rounded-xl " />
+                  <img src="https://i.pinimg.com/originals/cd/a5/a2/cda5a288883071b783cd97d68195df5f.jpg" alt="" className=" rounded-xl " />
                   </SwiperSlide>
                   <SwiperSlide>
-                  <img src="https://i.ibb.co/7ztJFPH/image-product-desktop.jpg" alt="" className=" rounded-xl " />
+                  <img src="https://avatars.mds.yandex.net/i?id=8607e051544f16aab59566e84c3f2cc2f00129b8-5166690-images-thumbs&n=13" alt="" className=" rounded-xl " />
                   </SwiperSlide>
                   <SwiperSlide>
-                  <img src="https://i.ibb.co/7ztJFPH/image-product-desktop.jpg" alt="" className=" rounded-xl " />
+                  <img src="https://avatars.mds.yandex.net/i?id=fce1ad80d95f1d94671921743483371b_l-5305969-images-thumbs&n=13" alt="" className=" rounded-xl " />
                   </SwiperSlide>
                   <SwiperSlide>
-                  <img src="https://i.ibb.co/7ztJFPH/image-product-desktop.jpg" alt="" className=" rounded-xl " />
+                  <img src="https://avatars.mds.yandex.net/i?id=75a6b3d224ec3b93276f78a1cbfc1a52_l-9065783-images-thumbs&n=13" alt="" className=" rounded-xl " />
                   </SwiperSlide>
                   <SwiperSlide>
-                  <img src="https://i.ibb.co/7ztJFPH/image-product-desktop.jpg" alt="" className=" rounded-xl " />
+                  <img src="https://i.pinimg.com/originals/b0/36/63/b03663786fdf4c65fa4338a8fd169ead.jpg" alt="" className=" rounded-xl " />
                   </SwiperSlide>
                   <SwiperSlide>
-                  <img src="https://i.ibb.co/7ztJFPH/image-product-desktop.jpg" alt="" className=" rounded-xl " />
+                  <img src="https://avatars.mds.yandex.net/i?id=269b804272c0ac9647db72395e12412b_l-5205087-images-thumbs&n=13" alt="" className=" rounded-xl " />
                   </SwiperSlide>
                   <div className="autoplay-progress" slot="container-end">
                     <svg viewBox="0 0 48 48" ref={progressCircle}>
