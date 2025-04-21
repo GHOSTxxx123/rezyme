@@ -165,7 +165,7 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
             bottomCurtainY={bottomCurtainY}
             curtainColor={curtainColor}
             >
-          <div className='bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]'>
+          <div className='bg-gradient-to-br max-lg:hidden lg:flex from-[#0f0c29] via-[#302b63] to-[#24243e]'>
             <div className="absolute inset-0 overflow-hidden">
               <AnimatePresence>
                 {visibleQuotes.map((quote) => (
@@ -176,7 +176,7 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
                   animate={{ scale: 1.1, filter: 'blur(0.5px)', opacity: 1 }}
                   exit={{ scale: 0.9, filter: 'blur(9px)', opacity: 0 }}
                   transition={{ duration: 1 }}
-                  className="absolute text-sky-400 text-xl w-2/8  px-3 py-2 rounded-lg pointer-events-none"
+                  className="absolute text-white text-xl w-2/8  px-3 py-2 rounded-lg pointer-events-none"
                   style={{ top: quote.top, bottom: quote.bottom, left: quote.left, right: quote.right, }}
                   >
                   {quote.text} 
@@ -194,47 +194,11 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
             />
 
               {open && (
-                // <>
-                //   <motion.div
-                //     initial={{ opacity: 0 }}
-                //     animate={{ opacity: 1,}}
-                //     transition={{ delay: 1.2, duration: 1 }}
-                //     className="absolute z-10 xl:top-88 md:top-90 md:left-[25%]  lg:left-[28%] xl:left-[35%]   max-md:top-90 max-md:left-5 max-md:right-5   text-black text-xl font-mono  text-blue-400 font-mono  h-30   xl:w-[40%] md:w-[50%] overflow-hiden"
-                //     >
-                //     <div className="whitespace-pre-wrap break-words">
-                //       {typedText_1}
-                //       <span className="animate-pulse">▌</span>
-                //     </div>
-                //     </motion.div>
-            
-                //     <motion.div
-                //     initial={{ opacity: 0 }}
-                //     animate={{ opacity: 1,  }}
-                //     transition={{ delay: 1.2, duration: 1 }}
-                //     className="p-4 rounded-lg shadow-lg absolute z-10 xl:top-85 md:top-70 max-md:top-70 xl:left-60 2xl:left-80 lg:left-[40%] md:left-[30%] sm:left-5 max-md:right-5 text-black text-2xl font-mono"
-                //     >
-                //       Я Негматов Азам 
-                //       <br /> 
-                //       Full stack development
-
-                //     </motion.div> 
-                //     <motion.div
-                //     initial={{ opacity: 0 }}
-                //     animate={{ opacity: 1,  }}
-                //     transition={{ delay: 1.2, duration: 1 }}
-
-                //     className="absolute z-10 lg:bottom-80 xl:bottom-90 2xl:bottom-100 md:bottom-60 max-sm:bottom-15 sm:bottom-80 xl:left-70 lg:left-[20%] md:left-[15%] md:right-5 md:w-4/6  text-black text-xl font-mono"
-                //     >
-                //       С тех пор как я впервые написал свою строку кода в 9 классе, программирование стало для меня чем-то большим, чем просто хобби — это мой способ видеть мир иначе. 
-                //       Я — студент, увлечённый технологиями, и каждый день открываю для себя новые грани IT. 
-                      
-                //       </motion.div>
-                //     </>
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1,}}
                       transition={{ delay: 1.2, duration: 1 }}
-                      className="relative flex justify-center items-center min-h-screen min-w-screen  ">
+                      className="relative lg:flex md:flex-col justify-center items-center min-h-screen min-w-screen  z-10">
 
                       <div 
                         style={{
@@ -243,25 +207,23 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
                         className="bg-cover bg-center md:absolute rounded-xl w-[80%] h-80  flex flex-col items-end shadow-2xl shadow-gray-500">
                         <div 
                           className='w-[56%] pr-50 '>
-
-                            {/* <p className="text-black text-lg md:text-xl font-semibold leading-relaxed mt-5">
-                            С тех пор как я впервые написал свою строку кода в 9 классе, программирование стало для меня чем-то большим, чем просто хобби — это мой способ видеть мир иначе. 
-                                  Я — студент, увлечённый технологиями, и каждый день открываю для себя новые грани IT. 
-
-                            </p> */}
-                            <div className="pt-20">
-                              <p className="text-white font-bold text-7xl">Негматов Азам </p>
-                              <p className="text-gray-200 font-bold text-4xl">Full stack development</p>
+                            <div className="2xl:pt-20 xl:pt-5">
+                              <p className="text-white font-bold md:text-7xl">Негматов Азам </p>
+                              <p className="text-gray-200 font-bold md:text-4xl">Full stack development</p>
                             </div>
                             <BtnNavigation 
                                  text='Мои Навыки' 
-                                 pos={"left-[55%] mt-2"} 
+                                 pos={"2xl:left-[55%] xl:left-[54%] lg:left-[50%] 2xl:mt-2 xl:mt-12 lg:mt-10"}
+                                 bg={"bg-white"}
+                                 bgh={"bg-[#302b63]"}
+                                 color={"text-[#302b63]"}
+                                 border={"hover:border-white"} 
                                  open={open} 
                                  navigation={true} 
                                  handleCurtainTransition={handleCurtainTransition} 
                             /> 
                         </div>
-                        <div className="rotate-x-15 -rotate-y-30 md:absolute top-100 md:top-1/2 md:-translate-y-1/2 xl:left-25 lg:left-10  w-100 rounded-xl shadow-2xl shadow-blue-500">
+                        <div className="lg:rotate-x-15 lg:-rotate-y-30 lg:absolute  lg:top-1/2 md:-translate-y-1/2 2xl:left-25 lg:left-1 xl:w-100  lg:w-90  rounded-xl shadow-2xl shadow-blue-500">
                             <div className="bg-gray-900 text-green-400 font-mono text-sm p-4 rounded-xl shadow-lg h-102 overflow-hidden">
                               <div className="mb-2 text-red-500 font-semibold">Terminal</div>
                               <div className="animate-pulse">
@@ -272,12 +234,20 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
                                 <p className='mb-6'>Press Ctrl+C to stop</p>
                               </div>
                               {typedText_1}
+                              <span className="animate-pulse">▌</span>
                             </div>
                         </div>
                         </div>
                   </motion.div>
               )}
+              
 
+          </div>
+
+          <div className='max-md:flex justify-center items-center h-full'>
+              <h3>
+                Сайт не доступин на экранах ниже 1024px
+              </h3>
           </div>
 
                   

@@ -23,7 +23,7 @@ export default function App() {
   const topCurtainY = open ? "-100%" : "-50%"; 
   const bottomCurtainY = open ? "100%" : "50%"; 
 
-  const curtainColors = ["#0e7490", "#3f6212", "#1e3a8a", "#78350f", "#4b5563"];
+  const curtainColors = ["#302b63", "#1d5731", "#1e3a8a", "#78350f", "#4b5563"];
   // const [curtainColor, setCurtainColor] = useState(curtainColors[0]);
   const curtainColor = curtainColors[currentSlide % curtainColors.length];
 
@@ -67,7 +67,7 @@ export default function App() {
         }}
         // navigation={true}
         
-        className="mySwiper"
+        className="mySwiper "
         speed={800}
       >
         <SwiperSlide>
@@ -87,6 +87,7 @@ export default function App() {
             topCurtainY={topCurtainY}
             bottomCurtainY={bottomCurtainY}
             curtainColor={curtainColor}
+            handleCurtainTransition={handleCurtainTransition_r}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -135,7 +136,7 @@ export default function App() {
           </Animshtor>
         </SwiperSlide>
         
-      {open && (
+      {/* {open && (
             <>
                {currentSlide > 0 && (
                 <BtnNavigation 
@@ -156,9 +157,9 @@ export default function App() {
                 /> 
               )}
             </>
-          )}
+          )} */}
       </Swiper>
-      
+    
     </>
   );
 }
