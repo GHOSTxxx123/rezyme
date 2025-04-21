@@ -94,7 +94,7 @@ export default function Skill({ topCurtainY, bottomCurtainY, curtainColor, open,
   const [popupPosition, setPopupPosition] = useState<'top' | 'bottom'>('bottom');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  const progressCircle = useRef<SVGCircleElement>(null);
+  const progressCircle = useRef<SVGCircleElement | null>(null);
 
   const progressContent = useRef<HTMLSpanElement>(null); // если там текст
 
@@ -236,8 +236,8 @@ useEffect(() => {
                   <img src="https://avatars.mds.yandex.net/i?id=269b804272c0ac9647db72395e12412b_l-5205087-images-thumbs&n=13" alt="" className=" rounded-xl " />
                   </SwiperSlide>
                   <div className="autoplay-progress" slot="container-end">
-                    <svg viewBox="0 0 48 48" ref={progressCircle}>
-                      <circle cx="24" cy="24" r="20"></circle>
+                    <svg viewBox="0 0 48 48" >
+                      <circle ref={progressCircle} cx="24" cy="24" r="20"></circle>
                     </svg>
                     <span ref={progressContent}></span>
                   </div>
