@@ -165,7 +165,7 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
             bottomCurtainY={bottomCurtainY}
             curtainColor={curtainColor}
             >
-          <div className='bg-gradient-to-br max-lg:hidden lg:flex from-[#0f0c29] via-[#302b63] to-[#24243e]'>
+          <div className='bg-gradient-to-br max-lg:hidden lg:flex from-[#3a3a5a] via-[#6460a0] to-[#5c5c78]'>
             <div className="absolute inset-0 overflow-hidden">
               <AnimatePresence>
                 {visibleQuotes.map((quote) => (
@@ -202,7 +202,7 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
 
                       <div 
                         style={{
-                          backgroundImage: "url('https://i.pinimg.com/originals/7a/ad/09/7aad099fb8d476c1ee3368401bdd8202.png')",
+                          backgroundImage: "url('/hero.png')",
                           filter: "brightness(0.9)",}}
                         className="bg-cover bg-center md:absolute rounded-xl w-[80%] h-80  flex flex-col items-end shadow-2xl shadow-gray-500">
                         <div 
@@ -224,10 +224,10 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
                             /> 
                         </div>
                         <div className="lg:rotate-x-15 lg:-rotate-y-30 lg:absolute  lg:top-1/2 md:-translate-y-1/2 2xl:left-25 lg:left-1 xl:w-100  lg:w-90  rounded-xl shadow-2xl shadow-blue-500">
-                            <div className="bg-gray-900 text-green-400 font-mono text-sm p-4 rounded-xl shadow-lg h-102 overflow-hidden">
+                            <div className="bg-gray-900 text-blue-400 font-mono text-sm p-4 rounded-xl shadow-lg h-102 overflow-hidden">
                               <div className="mb-2 text-red-500 font-semibold">Terminal</div>
                               <div className="animate-pulse">
-                                <p><span className="text-green-500">$</span> npm run dev</p>
+                                <p><span className="text-blue-500">$</span> npm run dev</p>
                                 <p>✔ Compiled successfully!</p>
                                 <p>➜  Local:   http://localhost:3000</p>
                                 <p>➜  Network: http://192.168.1.2:3000</p>

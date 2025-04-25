@@ -17,21 +17,26 @@ import {
   SiJavascript,
   SiJquery,
   SiLinux,
-  SiMongodb,
+  SiPostgresql,
+  SiSqlite,
+  SiSqlalchemy,
   SiGithub,
   SiGit,
-  SiNodedotjs,
+  SiTypescript,
   SiTailwindcss,
+  SiGooglemaps,
+  SiOpenstreetmap,
 } from "react-icons/si";
 import { useEffect, useRef, useState } from "react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import BtnNavigation from "./btnnavigation";
+
 
 const skillData = [
   { keyword: "HTML5", icon: SiHtml5, level: 90 },
   { keyword: "CSS", icon: SiCss3, level: 85 },
   { keyword: "JavaScript", icon: SiJavascript, level: 85 },
+  { keyword: "TypeScript", icon: SiTypescript, level: 85 },
   { keyword: "ReactJS", icon: SiReact, level: 90 },
   { keyword: "Vue", icon: SiVuedotjs, level: 75 },
   { keyword: "Next.js", icon: SiNextdotjs, level: 70 },
@@ -42,17 +47,22 @@ const skillData = [
   { keyword: "Flask", icon: SiFlask, level: 90 },
   { keyword: "Django", icon: SiDjango, level: 85 },
   { keyword: "FastAPI", icon: SiFastapi, level: 85 },
-  { keyword: "MongoDB", icon: SiMongodb, level: 75 },
+  { keyword: "PostgreSQL", icon: SiPostgresql, level: 75 },
+  { keyword: "SQLAlchemy", icon: SiSqlalchemy, level: 75 },
+  { keyword: "SQlite", icon: SiSqlite, level: 75 },
   { keyword: "Git", icon: SiGit, level: 80 },
   { keyword: "GitHub", icon: SiGithub, level: 85 },
   { keyword: "Linux", icon: SiLinux, level: 80 },
   { keyword: "JSON", icon: SiJson, level: 85 },
+  { keyword: "GoogleMaps", icon: SiGooglemaps, level: 85 },
+  { keyword: "OpenStreetMap", icon: SiOpenstreetmap, level: 85 },
 ];
 
 const Frontend = [
   { keyword: "HTML5", icon: SiHtml5, level: 90 },
   { keyword: "CSS", icon: SiCss3, level: 85 },
   { keyword: "JavaScript", icon: SiJavascript, level: 85 },
+  { keyword: "TypeScript", icon: SiTypescript, level: 85 },
   { keyword: "ReactJS", icon: SiReact, level: 90 },
   { keyword: "Vue", icon: SiVuedotjs, level: 75 },
   { keyword: "Next.js", icon: SiNextdotjs, level: 70 },
@@ -66,7 +76,9 @@ const Backend = [
   { keyword: "Flask", icon: SiFlask, level: 90 },
   { keyword: "Django", icon: SiDjango, level: 85 },
   { keyword: "FastAPI", icon: SiFastapi, level: 85 },
-  { keyword: "MongoDB", icon: SiMongodb, level: 75 },
+  { keyword: "PostgreSQL", icon: SiPostgresql, level: 75 },
+  { keyword: "SQLAlchemy", icon: SiSqlalchemy, level: 75 },
+  { keyword: "SQlite", icon: SiSqlite, level: 75 },
 ];
 
 const Ytil = [
@@ -74,6 +86,8 @@ const Ytil = [
   { keyword: "GitHub", icon: SiGithub, level: 85 },
   { keyword: "Linux", icon: SiLinux, level: 80 },
   { keyword: "JSON", icon: SiJson, level: 85 },
+  { keyword: "GoogleMaps", icon: SiGooglemaps, level: 85 },
+  { keyword: "OpenStreetMap", icon: SiOpenstreetmap, level: 85 },
 ];
 
 export type Skill = typeof skillData[number];
@@ -89,12 +103,11 @@ type Props = {
 export default function Skill({ topCurtainY, bottomCurtainY, curtainColor, open, handleCurtainTransition }: Props) {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [positions, setPositions] = useState<{ top: number; left: number }[]>([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const iconRef = useRef<HTMLDivElement>(null);
-  const [popupPosition, setPopupPosition] = useState<'top' | 'bottom'>('bottom');
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [usedSkills, setUsedSkills] = useState<string[]>([]);
   
-  const progressCircle = useRef<SVGCircleElement | null>(null);
+  const progressCircle = useRef<SVGSVGElement | null>(null);
 
   const progressContent = useRef<HTMLSpanElement>(null); // если там текст
 
@@ -136,7 +149,7 @@ useEffect(() => {
         left < textZone.right;
 
       const overlaps = usedPositions.some(
-        (p) => Math.abs(p.top - top) < 100 && Math.abs(p.left - left) < 100
+        (p) => Math.abs(p.top - top) < 100 && Math.abs(p.left - left) < 200
       );
 
       attempts++;
@@ -151,6 +164,40 @@ useEffect(() => {
 }, []);
 
 
+const descriptions = [
+  { index: 1, 
+    project: "Онлайн Магазин со всеми возможностями современных маркетплейсов 3 роли Покупатель/Продавец/Курьер + Сайт/iOS/Android",
+    skills: ["Next.js", "Tailwind", "JavaScript", "TypeScript", "HTML5", "CSS", "Git", "JSON", "Python", "Flask", "SQlite", "SQLAlchemy"],
+  },
+  {
+    index: 2, 
+    project: "Мобильно серверное приложение имеющее две в версии Заказчик и Водитель + DistanceMatrixAPI",
+    skills: ["Kivy", "Python", "GoogleMaps", "OpenStreetMap", "Flask"],
+  },
+  {
+    index: 3, 
+    project: "Кампайн для EVO, созданная под Kaztelecom и Tele2: умные голосовые боты ведут диалог с должниками, обучаясь на ходу и превращая холодные вызовы в точечные взыскания.",
+    skills: ["SQLAlchemy", "Python", "SQlite", "Flask", "Git", "Linux", "JSON", "Bootstrap", "Vue", "CSS", "HTML5"]
+  },
+  {
+    index: 4, 
+    project: "Stenograf для компании EVO — надежное и эффективное решение для точной и быстрой записи переговоров и судебных заседаний. Обеспечивает надежную документацию, необходимую для юридической точности и анализа.",
+    skills: ["ReactJS", "Tailwind", "CSS", "HTML5", "TypeScript", "PostgreSQL", "Git", "JSON", "Linux"]
+  },
+  {
+    index: 5, 
+    project: "Три стильных и функциональных лейдинг-пейджа: два для бизнеса и один — для личных проектов, с четким фокусом на простоту и результат",
+    skills: ["HTML5", "CSS", "JQuery", "Bootstrap", "Git"]
+  },
+  
+];
+
+const handleSlideChange = (swiper: any) => {
+  setCurrentSlide(swiper.realIndex);
+  setHoveredSkill(swiper.realIndex);
+  setUsedSkills(descriptions[swiper.realIndex]?.skills || []);
+};
+
   return (
     <AnimShtor 
     topCurtainY={topCurtainY}
@@ -163,6 +210,12 @@ useEffect(() => {
           <motion.div
             key={i}
             className={`absolute  text-gray-300 ${hoveredSkill === keyword ? "opacity-100 bg-lime-700 shadow-lg rounded-lg text-white p-2 text-[60px] z-10" : "text-[40px] opacity-90 -z-1"} duration-500`}
+            // key={i}
+            // className={`absolute text-gray-300 ${
+            //     hoveredSkill === keyword || usedSkills.includes(keyword)
+            //       ? "opacity-100 bg-lime-700 shadow-lg rounded-lg text-white p-2 text-[60px] z-10"
+            //       : "text-[40px] opacity-90 -z-1"
+            //   } duration-500`}
             style={{
               top: positions[i]?.top ?? 0,
               left: positions[i]?.left ?? 0,
@@ -190,14 +243,14 @@ useEffect(() => {
       {open && (
         
           <div className="max-lg:hidden flex min-h-screen items-center justify-center text-white ">
-            <div className="flex max-w-4xl rounded-xl border-black bg-white">
+            <div className="flex max-w-4xl rounded-xl border-black bg-white shadow-md shadow-green-100">
               <div className="w-1/2 flex flex-col justify-center items-center ml-2">
                 <p className="flex text-black mt-5">P R O J E C T S</p>
                 <Swiper
                   spaceBetween={30}
                   centeredSlides={true}
                   autoplay={{
-                    delay: 2500,
+                    delay: 4500,
                     disableOnInteraction: false,
                   }}
                   pagination={{
@@ -206,38 +259,32 @@ useEffect(() => {
                   navigation={true}
                   modules={[Autoplay, Pagination, Navigation]}
                   onAutoplayTimeLeft={onAutoplayTimeLeft}
+                  onSlideChange={handleSlideChange}
                   className="mySwiper h-[300px] mt-5 "
                 >
-                  <SwiperSlide>
-                    <img src="https://i.pinimg.com/originals/b8/59/ef/b859efc3d0f233861668dd03ea9eddc1.jpg" alt="" className=" rounded-xl " />
+                  <SwiperSlide className="w-full h-full flex items-center justify-center">
+                    <img src="/factori-price.jpg" alt="" className="max-w-full max-h-full object-contain rounded-xl" />
                   </SwiperSlide>
-                  <SwiperSlide>
-                  <img src="https://upload-os-bbs.hoyolab.com/upload/2023/06/01/329402116/e2d84cf968710b95186e262ce2d3bee5_2436149229872694004.jpeg" alt="" className=" rounded-xl " />
+                  
+                  <SwiperSlide className="w-full h-full flex items-center justify-center">
+                    <img src="/taxi.jpg" alt="" className="max-w-full max-h-full object-contain rounded-xl" />
                   </SwiperSlide>
-                  <SwiperSlide>
-                  <img src="https://i.pinimg.com/originals/6e/03/21/6e0321597039afa3bc11d02d52fdfa6e.jpg" alt="" className=" rounded-xl " />
+                  
+                  <SwiperSlide className="w-full h-full flex items-center justify-center">
+                    <img src="/evo-compain.jpg" alt="" className="max-w-full max-h-full object-contain rounded-xl" />
                   </SwiperSlide>
-                  <SwiperSlide>
-                  <img src="https://i.pinimg.com/originals/cd/a5/a2/cda5a288883071b783cd97d68195df5f.jpg" alt="" className=" rounded-xl " />
+                  
+                  <SwiperSlide className="w-full h-full flex items-center justify-center">
+                    <img src="/stenograf-exo.jpg" alt="" className="max-w-full max-h-full object-contain rounded-xl" />
                   </SwiperSlide>
-                  <SwiperSlide>
-                  <img src="https://avatars.mds.yandex.net/i?id=8607e051544f16aab59566e84c3f2cc2f00129b8-5166690-images-thumbs&n=13" alt="" className=" rounded-xl " />
+                  
+                  <SwiperSlide className="w-full h-full flex items-center justify-center">
+                    <img src="/leding.jpg" alt="" className="max-w-full max-h-full object-contain rounded-xl" />
                   </SwiperSlide>
-                  <SwiperSlide>
-                  <img src="https://avatars.mds.yandex.net/i?id=fce1ad80d95f1d94671921743483371b_l-5305969-images-thumbs&n=13" alt="" className=" rounded-xl " />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                  <img src="https://avatars.mds.yandex.net/i?id=75a6b3d224ec3b93276f78a1cbfc1a52_l-9065783-images-thumbs&n=13" alt="" className=" rounded-xl " />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                  <img src="https://i.pinimg.com/originals/b0/36/63/b03663786fdf4c65fa4338a8fd169ead.jpg" alt="" className=" rounded-xl " />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                  <img src="https://avatars.mds.yandex.net/i?id=269b804272c0ac9647db72395e12412b_l-5205087-images-thumbs&n=13" alt="" className=" rounded-xl " />
-                  </SwiperSlide>
+                
                   <div className="autoplay-progress" slot="container-end">
-                    <svg viewBox="0 0 48 48" >
-                      <circle ref={progressCircle} cx="24" cy="24" r="20"></circle>
+                    <svg viewBox="0 0 48 48" ref={progressCircle} >
+                      <circle  cx="24" cy="24" r="20"></circle>
                     </svg>
                     <span ref={progressContent}></span>
                   </div>
@@ -257,8 +304,7 @@ useEffect(() => {
 
                       <div className="mt-8 text-center">
                         <p className="text-gray-600 dark:text-gray-400 mb-4">
-                          This is the content of the first paragraph. You can add your text here.
-                          The divider above separates this section from the previous content.
+                            {descriptions[currentSlide]?.project}
                         </p>
                       </div>
                     </div>
@@ -289,7 +335,12 @@ useEffect(() => {
                                 onMouseLeave={() => setHoveredSkill(null)}
                                 key={index}
                                 onClick={() => setHoveredSkill(skill.keyword)}
-                                className="flex items-center gap-1 px-2 py-1 rounded-lg bg-lime-700 hover:bg-lime-600 text-white shadow transition duration-300"
+                                // className="flex items-center gap-1 px-2 py-1 rounded-lg bg-lime-700 hover:bg-lime-600 text-white shadow transition duration-300"
+                                className={`flex items-center gap-1 px-2 py-1 rounded-lg ${
+                                  usedSkills.includes(skill.keyword)
+                                    ? "text-white bg-lime-700"
+                                    : "bg-white text-black hover:bg-lime-700 hover:text-white"
+                                }  shadow transition duration-300`}
                               >
                                 <skill.icon className="w-5 h-5" />
                                 {skill.keyword}
@@ -313,7 +364,12 @@ useEffect(() => {
                                 onMouseLeave={() => setHoveredSkill(null)}
                                 key={index}
                                 onClick={() => setHoveredSkill(skill.keyword)}
-                                className="flex items-center gap-1 px-2 py-1 rounded-lg bg-lime-700 hover:bg-lime-600 text-white shadow transition duration-300"
+                                // className="flex items-center gap-1 px-2 py-1 rounded-lg bg-lime-700 hover:bg-lime-600 text-white shadow transition duration-300"
+                                className={`flex items-center gap-1 px-2 py-1 rounded-lg ${
+                                  usedSkills.includes(skill.keyword)
+                                    ? "text-white bg-lime-700"
+                                    : "bg-white text-black hover:bg-lime-700 hover:text-white"
+                                }  shadow transition duration-300`}
                               >
                                 <skill.icon className="w-5 h-5" />
                                 {skill.keyword}
@@ -337,7 +393,12 @@ useEffect(() => {
                                 onMouseLeave={() => setHoveredSkill(null)}
                                 key={index}
                                 onClick={() => setHoveredSkill(skill.keyword)}
-                                className="flex items-center gap-1 px-2 py-1 rounded-lg bg-lime-700 hover:bg-lime-600 text-white shadow transition duration-300"
+                                // className="flex items-center gap-1 px-2 py-1 rounded-lg bg-lime-700 hover:bg-lime-600 text-white shadow transition duration-300"
+                                className={`flex items-center gap-1 px-2 py-1 rounded-lg ${
+                                  usedSkills.includes(skill.keyword)
+                                    ? "text-white bg-lime-700"
+                                    : "bg-white text-black hover:bg-lime-700 hover:text-white"
+                                }  shadow transition duration-300`}
                               >
                                 <skill.icon className="w-5 h-5" />
                                 {skill.keyword}
@@ -346,7 +407,7 @@ useEffect(() => {
                       </div>
                 </div>
 
-                <div className="flex items-end text-end  justify-center mt-5">
+                <div className="flex items-end text-end  justify-center mt-5 mb-5">
                   <button
                     onClick={handleCurtainTransition}
                     className="relative inline-flex items-center ${bg} justify-center text-2xl p-4 px-6 py-3 overflow-hidden font-medium  transition ease-out hover:border-2 hover:border-[#1d5731] duration-500 rounded-full shadow-md group">

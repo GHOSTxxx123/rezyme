@@ -12,6 +12,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import '@/css/style.css';
 import { motion } from "framer-motion";
+import Archievements from './achievements';
 
 
 export default function App() {  
@@ -23,7 +24,7 @@ export default function App() {
   const topCurtainY = open ? "-100%" : "-50%"; 
   const bottomCurtainY = open ? "100%" : "50%"; 
 
-  const curtainColors = ["#302b63", "#1d5731", "#1e3a8a", "#78350f", "#4b5563"];
+  const curtainColors = ["#302b63", "#0f2910", "#1b003a",];
   // const [curtainColor, setCurtainColor] = useState(curtainColors[0]);
   const curtainColor = curtainColors[currentSlide % curtainColors.length];
 
@@ -91,19 +92,15 @@ export default function App() {
           />
         </SwiperSlide>
         <SwiperSlide>
-        <Animshtor 
+          <Archievements
+            open={open}
             topCurtainY={topCurtainY}
             bottomCurtainY={bottomCurtainY}
             curtainColor={curtainColor}
-            
-          >
-            <TextSlider 
-              text='Проекты'
-              open={open}
-            />
-          </Animshtor>
+            handleCurtainTransition={handleCurtainTransition_r}
+          />
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <Animshtor 
             topCurtainY={topCurtainY}
             bottomCurtainY={bottomCurtainY}
@@ -134,7 +131,7 @@ export default function App() {
               sadghasdhjskk
             </div>
           </Animshtor>
-        </SwiperSlide>
+        </SwiperSlide> */}
         
       {/* {open && (
             <>
