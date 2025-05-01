@@ -106,7 +106,7 @@
 	background-image: url("/IMG-20250424-WA0008.jpg");
 }
 
-.pane.active {
+/* .pane.active {
 	flex-grow: 10;
 	max-width: 100%;
 
@@ -129,4 +129,48 @@
 		opacity: 0.75;
 		transform: translateY(0);
 	}
+} */
+
+.pane.active {
+  flex-grow: 10;
+  max-width: 100%;
+
+  @media (max-width: 640px) {
+    min-height: 20rem;
+  }
+
+  .label {
+    /* @media (min-width: 640px) {
+      transform: translateX(0.5rem);
+    } */
+
+    /* @media (max-width: 640px) {
+      transform: translateY(0.5rem);
+    } */
+
+    .content > * {
+      opacity: 1;
+
+      /* @media (min-width: 640px) {
+        transform: translateX(0);
+      }
+
+      @media (max-width: 640px) {
+        transform: translateY(0);
+      } */
+    }
+  }
+
+  .shadow {
+    opacity: 0.75;
+
+    @media (min-width: 640px) {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      transform: translateY(0);
+    }
+  }
 }
+

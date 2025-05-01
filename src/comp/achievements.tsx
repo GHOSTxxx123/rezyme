@@ -14,10 +14,11 @@ type Props = {
   bottomCurtainY: string;
   curtainColor: string;
   open: boolean;
-  handleCurtainTransition: () => void;
+  handleCurtainTransition_r: () => void;
+  handleCurtainTransition_l: () => void;
 };
 
-export default function Archievements({ topCurtainY, bottomCurtainY, curtainColor, open, handleCurtainTransition }: Props) {
+export default function Archievements({ topCurtainY, bottomCurtainY, curtainColor, open, handleCurtainTransition_l, handleCurtainTransition_r }: Props) {
   const [activePaneIndex, setActivePaneIndex] = useState(3);
   const paneTitles = [
     { title: "World Skills", text: "Мобильная робототехника", color: "bg-red-500", img: "bg-world-img", img_src:"world.png",},
@@ -52,15 +53,15 @@ export default function Archievements({ topCurtainY, bottomCurtainY, curtainColo
     > 
       {open && (
         <>
-          <div className="antialiased bg-gradient-to-br from-[#1b003a] via-[#3c096c] to-[#9d4edd] flex flex-col font-sans justify-center h-screen p-2 items-center">
-              <div className="flex flex-col items-stretch max-w-3xl min-w-md w-full flex-row h-72 sm:overflow-hidden">
+          <div className="antialiased bg-gradient-to-br from-[#1b003a] via-[#3c096c] to-[#9d4edd] flex flex-col font-sans justify-center sm:h-full md:h-screen p-2 items-center ">
+              <div className="flex flex-col   sm:flex-row md:h-72 sm:h-full  items-stretch max-w-3xl min-w-md w-full overflow-hidden">
                 {paneTitles.map(({title, text, color, img, img_src}, index) => (
                       <div 
                           key={index}
                           onClick={() => setActivePaneIndex(index)}
                           className={`${activePaneIndex === index ? 'active' : 'undefined'} cursor-pointer duration-700 ease-in-out flex-grow m-2 min-h-[3.5rem] min-w-[3.5rem] overflow-hidden pane relative rounded-3xl transition-all`}>
-                        <div className={`absolute bg-center bg-cover ${color} ${img} bg-no-repeat duration-700 ease-in-out inset-0 scale-105 transition-all z-10 `}></div>
-                        <div className="absolute bg-gradient-to-b bottom-0 duration-700 ease-in-out from-transparent inset-x-0 opacity-0 shadow to-black transform transition-all z-20 h-1/2 translate-y-1/2"></div>
+                        <div className={`absolute bg-center bg-cover ${color} ${img} bg-no-repeat duration-700 ease-in-out background inset-0 scale-105 transition-all z-10 `}></div>
+                        <div className="absolute bg-gradient-to-b bottom-0 duration-700 ease-in-out from-transparent inset-x-0 opacity-0 shadow to-black transform transition-all z-20 h-1/2 translate-y-1/2 "></div>
                         <div className="absolute bottom-0 duration-700 ease-in-out flex label left-0 mb-2 ml-3 transition-all z-30 sm:mb-3 sm:ml-2">
                           <div className="bg-[#0f1011] flex h-10 icon items-center justify-center mr-1 rounded-full text-red-500 w-10">
                             <img src={img_src} className="w-10 h-10 object-contain bg-white rounded-full" />
@@ -72,6 +73,7 @@ export default function Archievements({ topCurtainY, bottomCurtainY, curtainColo
                         </div>
                       </div>
                       ))}
+                      
               </div>  
                 <div className=" mt-2 flex items-center justify-center">
                   <div className="mx-auto px-4 py-8">
@@ -86,7 +88,7 @@ export default function Archievements({ topCurtainY, bottomCurtainY, curtainColo
                         </div>
                       </div>                
 
-                      <div className="mt-8 w-172 text-center">
+                      <div className="mt-8 sm:w-120 md:w-170 text-center">
                         <p className="text-gray-600 dark:text-gray-400 mb-4">
                             {descriptions[activePaneIndex]}
                         </p>
@@ -106,7 +108,7 @@ export default function Archievements({ topCurtainY, bottomCurtainY, curtainColo
                         </div>
                       </div>                
 
-                      <div className="flex gap-4 mt-5">
+                      <div className="flex gap-4 mt-5 mb-10">
 
                           <button
                             className={`flex items-center gap-2 px-3 py-2 rounded-lg text-white bg-purple-900 hover:bg-purple-700 hover:text-white shadow transition duration-300`}
@@ -137,6 +139,34 @@ export default function Archievements({ topCurtainY, bottomCurtainY, curtainColo
                           </button>
 
                       </div>
+                      <div className="flex items-end text-end  justify-center mt-5 mb-5">
+                <button
+                          onClick={handleCurtainTransition_l}
+                          className={`mr-2 relative inline-flex items-center justify-center text-2xl p-4 px-6 py-3 overflow-hidden font-medium transition ease-out hover:border-2 hover:border-purple-700  duration-500 rounded-full shadow-md group`}
+                        >
+                            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-500 translate-x-full hover:bg-bg-purple-400 group-hover:translate-x-0 ease">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                                </svg>
+                            </span>
+                            <span className={`absolute flex items-center justify-center w-full h-full text-white transition-all  duration-500 transform group-hover:-translate-x-full ease`}>Навыки</span>
+                            <span className="relative invisible">Навыки</span>
+                        </button>
+                  {/* <button
+                    onClick={handleCurtainTransition_r}
+                    className="relative ml-2 inline-flex items-center justify-center text-2xl p-4 px-6 py-3 overflow-hidden font-medium  transition ease-out hover:border-2 hover:border-[#1d5731] duration-500 rounded-full shadow-md group">
+                
+                    <span className={`absolute inset-0 flex items-center justify-center w-full h-full text-white duration-500 -translate-x-full hover:bg-[#1d5731] group-hover:-translate-x-0 ease`}>
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                        <span className={`absolute flex items-center justify-center w-full h-full text-[#1d5731]  transition-all  duration-500 transform group-hover:translate-x-full ease`}>Достижения</span>
+                        <span className="relative invisible">Достижения</span>  
+                  </button> */}
+
+                  
+                </div>
                     </div>
                 </div>
                 
@@ -151,9 +181,9 @@ export default function Archievements({ topCurtainY, bottomCurtainY, curtainColo
         open={open}
       />
 
-      <div className="max-md:flex justify-center items-center h-full">
+      {/* <div className="max-md:flex justify-center items-center h-full">
         <h3>Сайт не доступен на экранах ниже 1024px</h3>
-      </div>
+      </div> */}
     </AnimShtor>
   );
 }

@@ -165,7 +165,7 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
             bottomCurtainY={bottomCurtainY}
             curtainColor={curtainColor}
             >
-          <div className='bg-gradient-to-br max-lg:hidden lg:flex from-[#3a3a5a] via-[#6460a0] to-[#5c5c78]'>
+          <div className='min-h-screen bg-gradient-to-br lg:flex from-[#3a3a5a] via-[#6460a0] to-[#5c5c78]'>
             <div className="absolute inset-0 overflow-hidden">
               <AnimatePresence>
                 {visibleQuotes.map((quote) => (
@@ -198,32 +198,37 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1,}}
                       transition={{ delay: 1.2, duration: 1 }}
-                      className="relative lg:flex md:flex-col justify-center items-center min-h-screen min-w-screen  z-10">
+                      className="relative flex md:flex-col justify-center items-center min-h-screen min-w-screen  lg:z-10">
 
                       <div 
                         style={{
                           backgroundImage: "url('/hero.png')",
                           filter: "brightness(0.9)",}}
-                        className="bg-cover bg-center md:absolute rounded-xl w-[80%] h-80  flex flex-col items-end shadow-2xl shadow-gray-500">
+                        className="max-lg:flex max-lg:flex-col max-lg:justify-center max-lg:items-center max-lg:min-h-screen bg-cover bg-center lg:absolute rounded-xl w-[80%] h-80  lg:flex lg:flex-col items-end shadow-2xl shadow-gray-500">
                         <div 
-                          className='w-[56%] pr-50 '>
+                          className='max-lg:flex-col max-lg:justify-center items-center md:w-[56%] md:pr-50 '>
                             <div className="2xl:pt-20 xl:pt-5">
-                              <p className="text-white font-bold md:text-7xl">Негматов Азам </p>
-                              <p className="text-gray-200 font-bold md:text-4xl">Full stack development</p>
+                              <p className="text-white font-bold md:text-7xl text-7xl">Негматов Азам </p>
+                              <p className="text-gray-200 font-bold md:text-4xl text-4xl">Full stack development</p>
                             </div>
-                            <BtnNavigation 
-                                 text='Мои Навыки' 
-                                 pos={"2xl:left-[55%] xl:left-[54%] lg:left-[50%] 2xl:mt-2 xl:mt-12 lg:mt-10"}
-                                 bg={"bg-white"}
-                                 bgh={"bg-[#302b63]"}
-                                 color={"text-[#302b63]"}
-                                 border={"hover:border-white"} 
-                                 open={open} 
-                                 navigation={true} 
-                                 handleCurtainTransition={handleCurtainTransition} 
-                            /> 
+                              <div className="flex items-end text-end  justify-center mt-5 mb-5">
+                                <button
+                                  onClick={handleCurtainTransition}
+                                  className="relative ml-2 inline-flex items-center justify-center text-2xl p-4 px-6 py-3 overflow-hidden font-medium bg-white  transition ease-out hover:border-2 hover:border-white duration-500 rounded-full shadow-md group">
+                                  
+                                  <span className={`absolute inset-0 flex items-center justify-center w-full h-full text-white duration-500 -translate-x-full hover:bg-gray-400 group-hover:-translate-x-0 ease`}>
+                                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                          </svg>
+                                      </span>
+                                      <span className={`absolute flex items-center justify-center w-full h-full text-black  transition-all  duration-500 transform group-hover:translate-x-full ease`}>Навыки</span>
+                                      <span className="relative invisible">Навыки</span>  
+                                </button>
+
+
+                              </div>
                         </div>
-                        <div className="lg:rotate-x-15 lg:-rotate-y-30 lg:absolute  lg:top-1/2 md:-translate-y-1/2 2xl:left-25 lg:left-1 xl:w-100  lg:w-90  rounded-xl shadow-2xl shadow-blue-500">
+                        <div className="max-lg:flex  lg:rotate-x-15 lg:-rotate-y-30 lg:absolute  lg:top-1/2 md:-translate-y-1/2 2xl:left-25 lg:left-1 xl:w-100  lg:w-90  rounded-xl shadow-2xl shadow-blue-500">
                             <div className="bg-gray-900 text-blue-400 font-mono text-sm p-4 rounded-xl shadow-lg h-102 overflow-hidden">
                               <div className="mb-2 text-red-500 font-semibold">Terminal</div>
                               <div className="animate-pulse">
@@ -244,11 +249,11 @@ export default function Aboute({ topCurtainY, bottomCurtainY, curtainColor, open
 
           </div>
 
-          <div className='max-md:flex justify-center items-center h-full'>
+          {/* <div className='max-md:flex justify-center items-center h-full'>
               <h3>
                 Сайт не доступин на экранах ниже 1024px
               </h3>
-          </div>
+          </div> */}
 
                   
         </ AnimShtor>

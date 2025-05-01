@@ -19,7 +19,8 @@ export default function AnimShtor({ topCurtainY, bottomCurtainY, curtainColor, c
 
 
   return (
-            <div className="relative w-full h-screen  overflow-hidden">
+            <div className="relative w-full min-h-screen overflow-hidden">
+            {children}
             {/* Верхняя штора с анимацией */}
             <motion.div
               initial={false}
@@ -50,9 +51,6 @@ export default function AnimShtor({ topCurtainY, bottomCurtainY, curtainColor, c
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className="absolute top-0 right-0 w-1/2 h-full  z-10"
             />
-    
-            {/* Контент сзади */}
-            {children}
           </div>
               
 

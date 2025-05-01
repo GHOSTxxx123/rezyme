@@ -97,10 +97,11 @@ type Props = {
   bottomCurtainY: string;
   curtainColor: string;
   open: boolean;
-  handleCurtainTransition: () => void;
+  handleCurtainTransition_r: () => void;
+  handleCurtainTransition_l: () => void;
 };
 
-export default function Skill({ topCurtainY, bottomCurtainY, curtainColor, open, handleCurtainTransition }: Props) {
+export default function Skill({ topCurtainY, bottomCurtainY, curtainColor, open, handleCurtainTransition_l, handleCurtainTransition_r }: Props) {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [positions, setPositions] = useState<{ top: number; left: number }[]>([]);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -204,8 +205,8 @@ const handleSlideChange = (swiper: any) => {
       bottomCurtainY={bottomCurtainY}
       curtainColor={curtainColor}
     > 
-    <div className="relative z-0 bg-gradient-to-br from-[#0f2910] via-[#2b6330] to-[#243e24]">
-      <div className="max-lg:hidden flex item-center justify-center  inset-0 z-0 overflow-hidden pointer-events-none">
+    <div className="relative max-lg:pb-10 bg-gradient-to-br from-[#0f2910] via-[#2b6330] to-[#243e24]">
+      <div className="flex  item-center justify-center  inset-0 z-0 overflow-hidden pointer-events-none">
         {skillData.map(({ keyword, icon: Icon, level }, i) => (
           <motion.div
             key={i}
@@ -242,8 +243,8 @@ const handleSlideChange = (swiper: any) => {
 
       {open && (
         
-          <div className="max-lg:hidden flex min-h-screen items-center justify-center text-white ">
-            <div className="flex max-w-4xl rounded-xl border-black bg-white shadow-md shadow-green-100">
+          <div className="flex max-lg:mt-10 10 lg:min-h-screen items-center justify-center text-white ">
+            <div className="flex  max-lg:flex-col items-center lg:max-w-4xl max-lg:max-w-xl  rounded-xl border-black bg-white shadow-md shadow-green-100">
               <div className="w-1/2 flex flex-col justify-center items-center ml-2">
                 <p className="flex text-black mt-5">P R O J E C T S</p>
                 <Swiper
@@ -260,7 +261,7 @@ const handleSlideChange = (swiper: any) => {
                   modules={[Autoplay, Pagination, Navigation]}
                   onAutoplayTimeLeft={onAutoplayTimeLeft}
                   onSlideChange={handleSlideChange}
-                  className="mySwiper h-[300px] mt-5 "
+                  className="mySwiper h-[300px]  mt-5 "
                 >
                   <SwiperSlide className="w-full h-full flex items-center justify-center">
                     <img src="/factori-price.jpg" alt="" className="max-w-full max-h-full object-contain rounded-xl" />
@@ -290,10 +291,10 @@ const handleSlideChange = (swiper: any) => {
                   </div>
                 </Swiper>
                 <div className=" mt-2 flex items-center justify-center">
-                  <div className="mx-auto px-4 py-8">
+                  <div className="md:mx-auto max-md:w-screen px-4 py-8">
                       <div className="relative">
                         <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                          <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
+                          <div className="w-full   border-t border-gray-300 dark:border-gray-600"></div>
                         </div>
                         <div className="relative flex justify-center">
                           <span className="px-3 bg-gray-100 dark:bg-gray-800 text-lg font-medium rounded-xl text-gray-900 dark:text-gray-100">
@@ -315,68 +316,70 @@ const handleSlideChange = (swiper: any) => {
 
 
 
-              <div className="w-2/4 space-y-4 rounded-xl bg-white text-black">
-                <div className="space-y-4 ml-7 mt-5">
+              <div className="flex-col justify-center items-center lg:w-2/4 max-lg:w-[70%] space-y-4 rounded-xl bg-white text-black">
+                <div className="space-y-4 lg:ml-7 mt-5">
                   <p className=" ">S K I L L S</p>
-                      <div className="relative">
-                        <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                          <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
-                        </div>
-                        <div className="relative flex justify-center">
-                          <span className="px-3 bg-gray-100 dark:bg-gray-800 text-lg font-medium rounded-xl text-gray-900 dark:text-gray-100">
-                            Frontend
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-4">
-                          {Frontend.map((skill, index) => (
-                            <button
-                                onMouseEnter={() => setHoveredSkill(skill.keyword)}
-                                onMouseLeave={() => setHoveredSkill(null)}
-                                key={index}
-                                onClick={() => setHoveredSkill(skill.keyword)}
-                                // className="flex items-center gap-1 px-2 py-1 rounded-lg bg-lime-700 hover:bg-lime-600 text-white shadow transition duration-300"
-                                className={`flex items-center gap-1 px-2 py-1 rounded-lg ${
-                                  usedSkills.includes(skill.keyword)
-                                    ? "text-white bg-lime-700"
-                                    : "bg-white text-black hover:bg-lime-700 hover:text-white"
-                                }  shadow transition duration-300`}
-                              >
-                                <skill.icon className="w-5 h-5" />
-                                {skill.keyword}
-                              </button>
-                          ))} 
-                      </div>
-                      <div className="relative">
-                        <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                          <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
-                        </div>
-                        <div className="relative flex justify-center">
-                          <span className="px-3 bg-gray-100 dark:bg-gray-800 text-lg font-medium rounded-xl text-gray-900 dark:text-gray-100">
-                            Backend
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-4">
-                          {Backend.map((skill, index) => (
-                            <button
-                                onMouseEnter={() => setHoveredSkill(skill.keyword)}
-                                onMouseLeave={() => setHoveredSkill(null)}
-                                key={index}
-                                onClick={() => setHoveredSkill(skill.keyword)}
-                                // className="flex items-center gap-1 px-2 py-1 rounded-lg bg-lime-700 hover:bg-lime-600 text-white shadow transition duration-300"
-                                className={`flex items-center gap-1 px-2 py-1 rounded-lg ${
-                                  usedSkills.includes(skill.keyword)
-                                    ? "text-white bg-lime-700"
-                                    : "bg-white text-black hover:bg-lime-700 hover:text-white"
-                                }  shadow transition duration-300`}
-                              >
-                                <skill.icon className="w-5 h-5" />
-                                {skill.keyword}
-                              </button>
-                          ))} 
-                      </div>
-                      <div className="relative">
+                          <div className="relative mb-2">
+                            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                              <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
+                            </div>
+                            <div className="relative flex justify-center">
+                              <span className="px-3 bg-gray-100 dark:bg-gray-800 text-lg font-medium rounded-xl text-gray-900 dark:text-gray-100">
+                                Frontend
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex flex-wrap gap-4">
+                              {Frontend.map((skill, index) => (
+                                <button
+                                    onMouseEnter={() => setHoveredSkill(skill.keyword)}
+                                    onMouseLeave={() => setHoveredSkill(null)}
+                                    key={index}
+                                    onClick={() => setHoveredSkill(skill.keyword)}
+                                    // className="flex items-center gap-1 px-2 py-1 rounded-lg bg-lime-700 hover:bg-lime-600 text-white shadow transition duration-300"
+                                    className={`flex items-center gap-1 px-2 py-1 rounded-lg ${
+                                      usedSkills.includes(skill.keyword)
+                                        ? "text-white bg-lime-700"
+                                        : "bg-white text-black hover:bg-lime-700 hover:text-white"
+                                    }  shadow transition duration-300`}
+                                  >
+                                    <skill.icon className="w-5 h-5" />
+                                    {skill.keyword}
+                                  </button>
+                              ))} 
+                          </div>
+                          <div className="relative mb-2">
+                            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                              <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
+                            </div>
+                            <div className="relative flex justify-center">
+                              <span className="px-3 bg-gray-100 dark:bg-gray-800 text-lg font-medium rounded-xl text-gray-900 dark:text-gray-100">
+                                Backend
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex flex-wrap gap-4">
+                              {Backend.map((skill, index) => (
+                                <button
+                                    onMouseEnter={() => setHoveredSkill(skill.keyword)}
+                                    onMouseLeave={() => setHoveredSkill(null)}
+                                    key={index}
+                                    onClick={() => setHoveredSkill(skill.keyword)}
+                                    // className="flex items-center gap-1 px-2 py-1 rounded-lg bg-lime-700 hover:bg-lime-600 text-white shadow transition duration-300"
+                                    className={`flex items-center gap-1 px-2 py-1 rounded-lg ${
+                                      usedSkills.includes(skill.keyword)
+                                        ? "text-white bg-lime-700"
+                                        : "bg-white text-black hover:bg-lime-700 hover:text-white"
+                                    }  shadow transition duration-300`}
+                                  >
+                                    <skill.icon className="w-5 h-5" />
+                                    {skill.keyword}
+                                  </button>
+                              ))} 
+                          </div>
+                      
+
+                      <div className="relative mb-2">
                         <div className="absolute inset-0 flex items-center" aria-hidden="true">
                           <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
                         </div>
@@ -405,12 +408,25 @@ const handleSlideChange = (swiper: any) => {
                               </button>
                           ))} 
                       </div>
+                      
                 </div>
 
                 <div className="flex items-end text-end  justify-center mt-5 mb-5">
+                <button
+                          onClick={handleCurtainTransition_l}
+                          className={`mr-2 relative inline-flex items-center justify-center text-2xl p-4 px-6 py-3 overflow-hidden font-medium transition ease-out hover:border-2 hover:border-[#1d5731]  duration-500 rounded-full shadow-md group`}
+                        >
+                            <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-500 translate-x-full hover:bg-[#1d5731] group-hover:translate-x-0 ease">
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                                </svg>
+                            </span>
+                            <span className={`absolute flex items-center justify-center w-full h-full text-[#1d5731] transition-all  duration-500 transform group-hover:-translate-x-full ease`}>О себе</span>
+                            <span className="relative invisible">О себе</span>
+                        </button>
                   <button
-                    onClick={handleCurtainTransition}
-                    className="relative inline-flex items-center ${bg} justify-center text-2xl p-4 px-6 py-3 overflow-hidden font-medium  transition ease-out hover:border-2 hover:border-[#1d5731] duration-500 rounded-full shadow-md group">
+                    onClick={handleCurtainTransition_r}
+                    className="relative ml-2 inline-flex items-center justify-center text-2xl p-4 px-6 py-3 overflow-hidden font-medium  transition ease-out hover:border-2 hover:border-[#1d5731] duration-500 rounded-full shadow-md group">
                 
                     <span className={`absolute inset-0 flex items-center justify-center w-full h-full text-white duration-500 -translate-x-full hover:bg-[#1d5731] group-hover:-translate-x-0 ease`}>
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -420,6 +436,7 @@ const handleSlideChange = (swiper: any) => {
                         <span className={`absolute flex items-center justify-center w-full h-full text-[#1d5731]  transition-all  duration-500 transform group-hover:translate-x-full ease`}>Достижения</span>
                         <span className="relative invisible">Достижения</span>  
                   </button>
+
                   
                 </div>
               </div>
@@ -432,11 +449,11 @@ const handleSlideChange = (swiper: any) => {
         open={open}
       />
       </div>
-      <div className='max-md:flex justify-center items-center h-full'>
+      {/* <div className='max-md:flex justify-center items-center h-full'>
               <h3>
                 Сайт не доступин на экранах ниже 1024px
               </h3>
-      </div>
+      </div> */}
 
     </AnimShtor>
   );

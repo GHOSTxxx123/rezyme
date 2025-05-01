@@ -26,7 +26,7 @@ export default function TextSlider({ text, open }: Props) {
             { position: 'absolute', top: 'calc(var(--spacing)* 100)', color: "transparent", opacity: 1} 
           }
           transition={{ duration: 0.8 }}
-          className="absolute top-100 left-[48.5%] -translate-x-1/2 text-7xl font-bold z-10 pointer-events-none outline-text"
+          className="absolute top-100 left-[48.5%] -translate-x-1/2 lg:text-7xl max-lg:text-4xl font-bold z-10 pointer-events-none outline-text"
         >
             {text}
         </motion.div>

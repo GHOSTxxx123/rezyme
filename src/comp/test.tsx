@@ -13,6 +13,7 @@ import 'swiper/css/navigation';
 import '@/css/style.css';
 import { motion } from "framer-motion";
 import Archievements from './achievements';
+import TestAb from './testab';
 
 
 export default function App() {  
@@ -66,12 +67,14 @@ export default function App() {
          onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        // navigation={true}
         
+        autoHeight={true}
         className="mySwiper "
         speed={800}
       >
-        <SwiperSlide>
+        <SwiperSlide 
+          className={``}
+        >
             <Aboute
               open={open}
               topCurtainY={topCurtainY}
@@ -81,6 +84,7 @@ export default function App() {
               navigation={true}
               handleCurtainTransition={handleCurtainTransition_r}
             />
+            
         </SwiperSlide>
         <SwiperSlide>
           <Skill 
@@ -88,7 +92,8 @@ export default function App() {
             topCurtainY={topCurtainY}
             bottomCurtainY={bottomCurtainY}
             curtainColor={curtainColor}
-            handleCurtainTransition={handleCurtainTransition_r}
+            handleCurtainTransition_r={handleCurtainTransition_r}
+            handleCurtainTransition_l={handleCurtainTransition_l}
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -97,64 +102,11 @@ export default function App() {
             topCurtainY={topCurtainY}
             bottomCurtainY={bottomCurtainY}
             curtainColor={curtainColor}
-            handleCurtainTransition={handleCurtainTransition_r}
+            handleCurtainTransition_r={handleCurtainTransition_r}
+            handleCurtainTransition_l={handleCurtainTransition_l}
           />
         </SwiperSlide>
-        {/* <SwiperSlide>
-          <Animshtor 
-            topCurtainY={topCurtainY}
-            bottomCurtainY={bottomCurtainY}
-            curtainColor={curtainColor}
-            
-          >
-            <TextSlider 
-              text='Достижения'
-              open={open}
-            />
-          </Animshtor>
-        </SwiperSlide>
-        <SwiperSlide>
-        <Animshtor 
-            topCurtainY={topCurtainY}
-            bottomCurtainY={bottomCurtainY}
-            curtainColor={curtainColor}
-            
-          >
-            <TextSlider 
-              text='Контакты'
-              open={open}
-            />
-            <div
-            
-              className='bg-green-200'
-            > 
-              sadghasdhjskk
-            </div>
-          </Animshtor>
-        </SwiperSlide> */}
         
-      {/* {open && (
-            <>
-               {currentSlide > 0 && (
-                <BtnNavigation 
-                  text='О Себе'
-                  pos={currentSlide === 0 ? "md:left-[43%] max-md:left[30%]" : "md:left-[35%] max-md:left-[5%]"}
-                  open={open}
-                  navigation={false}
-                  handleCurtainTransition={handleCurtainTransition_l}
-                /> 
-              )}
-              {currentSlide < curtainColors.length - 1 && (
-                <BtnNavigation 
-                  text='Мои Навыки'
-                  pos={currentSlide === 0 ? "md:left-[43%] max-md:left-[28%]" : "left-[50%]"}
-                  open={open}
-                  navigation={true}
-                  handleCurtainTransition={handleCurtainTransition_r}
-                /> 
-              )}
-            </>
-          )} */}
       </Swiper>
     
     </>
